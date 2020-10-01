@@ -2,5 +2,8 @@
   "name": "jigsaw-mutex",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jigsaw.js": "^5.2.0"
+  }
 }

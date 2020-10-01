@@ -11,7 +11,7 @@ class JGMutex{
 	}
 	export(){
 		this.jg.port("lock",({key})=>this.mutexmanager.lock(key));
-		this.jg.port("trylock",({key})=>this.mutexmanager.unlock(key));
+		this.jg.port("trylock",({key})=>this.mutexmanager.trylock(key));
 		this.jg.port("unlock",({key})=>this.mutexmanager.unlock(key));
 	}
 }

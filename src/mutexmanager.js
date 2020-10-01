@@ -2,11 +2,12 @@ const LimitMap=require("./limitmap");
 const Mutex=require("./mutex");
 
 class MutexManager{
-	constructor(){
-		this.locks=new LimitMap(1000);
+	constructor(size){
+		this.locks=new LimitMap(size || 10*10000);
 	}
 	_getLock(key){
 		let lock=this.locks.get(key);
+
 		if(!this.locks.has(key)){
 			lock=new Mutex(key);
 			this.locks.set(key,lock);
@@ -16,6 +17,7 @@ class MutexManager{
 	}
 	trylock(key){
 		let lock=this._getLock(key);
+		
 		return lock.trylock();
 	}
 	lock(key){
@@ -24,6 +26,7 @@ class MutexManager{
 	}
 	unlock(key){
 		let lock=this._getLock(key);
+
 		return lock.unlock();
 	}
 }
